@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/LoginRedux-AG/static/css/main.f72c7feb.chunk.css",
+    "main.js": "/LoginRedux-AG/static/js/main.360453bf.chunk.js",
+    "main.js.map": "/LoginRedux-AG/static/js/main.360453bf.chunk.js.map",
+    "runtime-main.js": "/LoginRedux-AG/static/js/runtime-main.5ad66028.js",
+    "runtime-main.js.map": "/LoginRedux-AG/static/js/runtime-main.5ad66028.js.map",
+    "static/js/2.bb842a14.chunk.js": "/LoginRedux-AG/static/js/2.bb842a14.chunk.js",
+    "static/js/2.bb842a14.chunk.js.map": "/LoginRedux-AG/static/js/2.bb842a14.chunk.js.map",
+    "index.html": "/LoginRedux-AG/index.html",
+    "static/css/main.f72c7feb.chunk.css.map": "/LoginRedux-AG/static/css/main.f72c7feb.chunk.css.map",
+    "static/js/2.bb842a14.chunk.js.LICENSE.txt": "/LoginRedux-AG/static/js/2.bb842a14.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5ad66028.js",
+    "static/js/2.bb842a14.chunk.js",
+    "static/css/main.f72c7feb.chunk.css",
+    "static/js/main.360453bf.chunk.js"
+  ]
+}
