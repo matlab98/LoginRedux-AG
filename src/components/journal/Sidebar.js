@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { startLogout } from '../../logic/actions/auth'
+import { startLogout } from '../actions/auth'
 import { JournalEntries } from './JournalEntries'
 
 export const Sidebar = () => {

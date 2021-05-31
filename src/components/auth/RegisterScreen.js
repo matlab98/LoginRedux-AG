@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
 import { useForm } from '../../hooks/useForm';
-import { startRegisterWithEmailPassword } from '../../logic/actions/auth';
-import { setError, removeError } from '../../logic/actions/uiError';
+import { startRegisterWithEmailPassword } from '../actions/auth';
+import { setError, removeError } from '../actions/uiError';
 import Sweet from 'sweetalert2'
 
 export const RegisterScreen = () => {
