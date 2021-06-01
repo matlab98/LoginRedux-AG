@@ -1,82 +1,68 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
-import { useForm } from '../../hooks/useForm';
-import { startRegisterWithEmailPassword } from '../actions/auth';
-import { setError, removeError } from '../actions/uiError';
-import Sweet from 'sweetalert2'
+import { useForm } from '../../hooks/useForm'
+import { useDispatch, useSelector } from 'react-redux'
+import { setError, removeError } from '../actions/uiError'
+import { startRegisterWithEmailPasswordName } from '../actions/auth'
 
 export const RegisterScreen = () => {
 
-    const dispatch = useDispatch()
-    const { msjError } = useSelector(state => state.ui)
+    const dispatch = useDispatch();
 
-    const [formValues, handleInputChange, reset] = useForm({
+    const { msjError } = useSelector(state => state.ui);
+
+    const [values, handleInputChange] = useForm({
         name: '',
         email: '',
         password: '',
         password2: ''
     })
 
-    const { name, email, password, password2 } = formValues
-
-    const error = (error) => {
-        return (
-            Sweet.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: error,
-            })
-        )
-    }
+    const { name, email, password, password2 } = values
 
     const formValid = () => {
         if (name.trim().length === 0) {
-            dispatch(setError('Nombre requerido'))
-            // error('Nombre requerido')
+            dispatch(setError('nombre requerido'))
+            console.log('nombre requerido')
             return false
-        }
-        else if (!validator.isEmail(email)) {
+        } else if (!validator.isEmail(email)) {
             dispatch(setError('Email requerido'))
-            // error('Email requerido')
+            console.log('Email requerido')
             return false
-        }
-        else if (password !== password2 || password < 5) {
-            dispatch(setError('La contraseña es incorecta'))
-            // error('La contraseña es incorecta')
+        } else if (password !== password2) {
+            console.log('La contraseña es incorrecta')
+            dispatch(setError('La contraseña es incorrecta'))
             return false
         }
 
-        dispatch(removeError(''))
+        dispatch(removeError())
         return true
+
     }
 
-    const handleRegister = (e) => {
-        e.preventDefault()
-        error(msjError)
+    const HandleRegister = (e) => {
+        e.preventDefault();
         if (formValid()) {
-            reset()
-            dispatch(startRegisterWithEmailPassword(email, password, name))
+            dispatch(startRegisterWithEmailPasswordName(email, password, name))
         }
-        
     }
 
     return (
         <>
             <h3 className="auth__title">Register</h3>
-            {/* {
+
+            <form onSubmit={HandleRegister}>
+
+                {
                     msjError &&
                     (
-                        Sweet.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: msjError,
-            
-                        })
+                        <div className="auth__alert-error">
+                            { msjError}
+                        </div>
                     )
-                } */}
-            <form onSubmit={handleRegister}>
+                }
+
                 <input
                     type="text"
                     placeholder="Name"
@@ -84,18 +70,16 @@ export const RegisterScreen = () => {
                     className="auth__input"
                     autoComplete="off"
                     value={name}
-                    onChange={handleInputChange}
-                />
+                    onChange={handleInputChange} />
 
                 <input
-                    type="email"
+                    type="text"
                     placeholder="Email"
                     name="email"
                     className="auth__input"
                     autoComplete="off"
                     value={email}
-                    onChange={handleInputChange}
-                />
+                    onChange={handleInputChange} />
 
                 <input
                     type="password"
@@ -103,8 +87,7 @@ export const RegisterScreen = () => {
                     name="password"
                     className="auth__input"
                     value={password}
-                    onChange={handleInputChange}
-                />
+                    onChange={handleInputChange} />
 
                 <input
                     type="password"
@@ -112,24 +95,17 @@ export const RegisterScreen = () => {
                     name="password2"
                     className="auth__input"
                     value={password2}
-                    onChange={handleInputChange}
-                />
-
+                    onChange={handleInputChange} />
 
                 <button
                     type="submit"
-                    className="btn btn-primary btn-block mb-5"
-                    
-                >
+                    className="btn btn-primary btn-block mb-5" >
                     Register
                 </button>
 
-
-
                 <Link
                     to="/auth/login"
-                    className="link"
-                >
+                    className="link" >
                     Already registered?
                 </Link>
 

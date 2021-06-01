@@ -1,7 +1,7 @@
-import { types } from "../types/types";
+import { types } from '../types/types'
 
 const initialState = {
-    loading: false,
+    loadding: false,
     msjError: null
 }
 
@@ -10,8 +10,9 @@ export const registro = (state = initialState, action) => {
         case types.uiSetError:
             return {
                 ...state,
-                msjError: action.payLoad
+                msjError: action.payload
             }
+
         case types.uiRemoveError:
             return {
                 ...state,
@@ -29,10 +30,12 @@ export const registro = (state = initialState, action) => {
                 ...state,
                 loading: false
             }
-
+            
         case types.logout:
-            return {}
-
+            return {
+                ...state,
+                loading: false
+            }
         default:
             return state;
     }
